@@ -13,6 +13,8 @@ import java.sql.*;
 public class prueba {
     public static void main(String[] args) throws SQLException {
         int opc = 0;
+        int codigo = 0;
+        String dpi = "";
         String nombre ="";
         String apellido = "";
         String edad = "";
@@ -31,6 +33,8 @@ public class prueba {
             switch(opc){
                 case 1:
                 {
+                     System.out.println("ingrese dpi");
+                    dpi = entrada.next();
                     System.out.println("ingrese nombre");
                     nombre = entrada.next();
                     System.out.println("ingrese apellido");
@@ -38,7 +42,7 @@ public class prueba {
                     System.out.println("ingrese edad");
                     edad = entrada.next();
                     if(!nombre.isEmpty() && !apellido.isEmpty() && !edad.isEmpty()){
-                    con.nuevo(nombre, apellido, edad);
+                    con.nuevo(dpi, nombre, apellido, edad);
                         System.out.println("Datos introducidos correctamente");
                     }
                     else{
@@ -49,14 +53,56 @@ public class prueba {
                 case 2:
                 {
                     ResultSet datos = con.listado();
-                        System.out.println("Nombre de Usuario  Apellido de Usuario Edad de Usuario");
+                        System.out.println("|Nombre     |   Apellido     |   Edad ");
                     while(datos.next()){
-                        System.out.println(" "+datos.getString(2)+" "+datos.getString(3)+" "+datos.getString(4));
+                        System.out.println("|"+datos.getString(2)+"        | "+datos.getString(3)+"    |  "+datos.getString(4)+"| " +datos.getString(5));
+                        System.out.println("-------------------------------------------");
                     }
                     break;
                 }
                 case 3:
-                {
+                {   
+                       //----------------------------------------------
+                        String nit = "";
+                        String nombre = "";
+                        String cliente = "";
+                        String apellido = "";
+                        String direccion = "";
+                        String telefono = "";
+
+                        int ID = Integer.parseInt(request.getParameter("cliente"));
+                        ConsultasCliente Conn = new ConsultasCliente();
+                        ResultSet clientes = Conn.getUno(ID);
+                        while(clientes.next()){ 
+                            nit = clientes.getString(2);
+                            nombre = clientes.getString(3);
+                            apellido = clientes.getString(4);
+                            direccion = clientes.getString(5);
+                            telefono = clientes.getString(6);
+                        }
+                        //--------------------------------------------------------
+                    System.out.println("Ingrese dpi");
+                    dpi = entrada.next();
+                  
+                        System.out.println("ingrese nuevo nombre");
+                        nombre = entrada.next();
+                        System.out.println("ingrese nuevo apellido");
+                        apellido = entrada.next();
+                        System.out.println("ingrese nueva edad");
+                        edad = entrada.next();
+                          
+                        if(!dpi.isEmpty() &&!nombre.isEmpty() && !apellido.isEmpty() && !edad.isEmpty()){
+                           
+                            
+                        con.actualizar(dpi,nombre, apellido, edad);
+                            System.out.println("Datos introducidos correctamente");
+                        }
+                        else{
+                            System.out.println("introduzca correctamente los datos");
+                        }
+                    
+                    
+                    
                     break;
                 }
                 case 4:
