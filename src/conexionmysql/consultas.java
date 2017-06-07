@@ -23,4 +23,18 @@ public class consultas extends Conexionmysql {
     }
     return filas;
     }
+    public ResultSet listado(){
+    ResultSet filas = null;
+    Statement st = null;
+    try{
+        st = connection.createStatement();
+        String consulta = "SELECT * FROM usuario";
+        filas = st.executeQuery(consulta);
+    }
+    catch(SQLException e){
+        System.out.println("error de conexion"+ e.getMessage());
+    
+    }
+    return filas;
+    }
 }
