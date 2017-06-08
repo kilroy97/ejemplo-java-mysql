@@ -13,7 +13,7 @@ import java.sql.*;
 public class prueba {
     public static void main(String[] args) throws SQLException {
         int opc = 0;
-        int codigo = 0;
+        String codigo = "";
         String dpi = "";
         String nombre ="";
         String apellido = "";
@@ -62,47 +62,43 @@ public class prueba {
                 }
                 case 3:
                 {   
-                       //----------------------------------------------
-                      /*  String nit = "";
-                        String nombre = "";
-                        String cliente = "";
-                        String apellido = "";
-                        String direccion = "";
-                        String telefono = "";
-
-                        int ID = Integer.parseInt(request.getParameter("cliente"));
-                        ConsultasCliente Conn = new ConsultasCliente();
-                        ResultSet clientes = Conn.getUno(ID);
-                        while(clientes.next()){ 
-                            nit = clientes.getString(2);
-                            nombre = clientes.getString(3);
-                            apellido = clientes.getString(4);
-                            direccion = clientes.getString(5);
-                            telefono = clientes.getString(6);
-                        }*/
-                        //--------------------------------------------------------
-                    System.out.println("Ingrese dpi");
-                    dpi = entrada.next();
-                  
+                      consultas Conn = new consultas();
+                        
+                        System.out.println("Ingrese codigo a verificar: ");
+                        codigo = entrada.next();
+                        
+                        int ID = Integer.parseInt(codigo);
+                       
+                            /*ResultSet datos = Conn.listado();
+                             
+                           while(datos.next()){ 
+                                //codigo = datos.getString(1);
+                                dpi = datos.getString(2);
+                                nombre = datos.getString(3);
+                                apellido = datos.getString(4);
+                                edad = datos.getString(5);
+                            }*/
+                            
+                        System.out.println("Ingrese nuevo dpi");
+                        dpi = entrada.next();
                         System.out.println("ingrese nuevo nombre");
                         nombre = entrada.next();
                         System.out.println("ingrese nuevo apellido");
                         apellido = entrada.next();
                         System.out.println("ingrese nueva edad");
                         edad = entrada.next();
-                          
+                           
                         if(!dpi.isEmpty() &&!nombre.isEmpty() && !apellido.isEmpty() && !edad.isEmpty()){
                            
                             
-                        con.actualizar(dpi,nombre, apellido, edad);
+                        Conn.actualizar(ID, dpi,nombre, apellido, edad);
+                       
                             System.out.println("Datos introducidos correctamente");
                         }
                         else{
                             System.out.println("introduzca correctamente los datos");
                         }
-                    
-                    
-                    
+                           
                     break;
                 }
                 case 4:

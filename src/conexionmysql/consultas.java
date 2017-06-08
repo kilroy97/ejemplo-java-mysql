@@ -37,12 +37,28 @@ public class consultas extends Conexionmysql {
     }
     return filas;
     }
-    public int actualizar(String dpi, String nombre, String apellido, String edad){
+     public ResultSet getUno(int id) {
+        ResultSet filas = null;
+        Statement st = null;
+        try {
+            st = connection.createStatement();
+            String consultaSQL = "SELECT * FROM usuario WHERE Codigo='"+id+"'";
+            filas = st.executeQuery(consultaSQL);
+        } catch (SQLException e) {
+            System.err.println("Error en la carga del driver: " + e.getMessage());
+        } 
+        return filas;
+    }
+    public int actualizar(int codigo, String dpi, String nombre, String apellido, String edad){
     int filas = 0;
     Statement st = null;
         try{ 
         st = connection.createStatement();
-        String consulta = "UPDATE usuario" + "SET Nombre = '"+nombre+"', Apellido = '"+apellido+"', Edad = '"+edad+"' "+ "WHERE dpi = "+dpi+";";
+        String consulta = "UPDATE usuario " +
+                    "SET dpi = '" + dpi + "', Nombre = '" + nombre + "'," +" Apellido = '" + apellido + "'," 
+                    +" Edad = '" + edad + "'" +
+                    " WHERE Codigo ="+codigo+";";
+            filas = st.executeUpdate(consulta);
         }
         catch(SQLException e){
             System.out.println("error de conexion"+ e.getMessage());
@@ -50,16 +66,5 @@ public class consultas extends Conexionmysql {
         }
         return filas;
     }
-     public ResultSet getUno(int id) {
-        ResultSet filas = null;
-        Statement st = null;
-        try {
-            st = connection.createStatement();
-            String consultaSQL = "SELECT * FROM usuario WHERE dpi='"+id+"'";
-            filas = st.executeQuery(consultaSQL);
-        } catch (SQLException e) {
-            System.err.println("Error en la carga del driver: " + e.getMessage());
-        } 
-        return filas;
-    }
+   
 }
