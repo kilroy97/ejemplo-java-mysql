@@ -63,7 +63,7 @@ public class prueba {
                 case 3:
                 {   
                        //----------------------------------------------
-                        String nit = "";
+                      /*  String nit = "";
                         String nombre = "";
                         String cliente = "";
                         String apellido = "";
@@ -79,7 +79,7 @@ public class prueba {
                             apellido = clientes.getString(4);
                             direccion = clientes.getString(5);
                             telefono = clientes.getString(6);
-                        }
+                        }*/
                         //--------------------------------------------------------
                     System.out.println("Ingrese dpi");
                     dpi = entrada.next();
