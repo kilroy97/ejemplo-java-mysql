@@ -37,18 +37,7 @@ public class consultas extends Conexionmysql {
     }
     return filas;
     }
-     public ResultSet getUno(int id) {
-        ResultSet filas = null;
-        Statement st = null;
-        try {
-            st = connection.createStatement();
-            String consultaSQL = "SELECT * FROM usuario WHERE Codigo='"+id+"'";
-            filas = st.executeQuery(consultaSQL);
-        } catch (SQLException e) {
-            System.err.println("Error en la carga del driver: " + e.getMessage());
-        } 
-        return filas;
-    }
+     
     public int actualizar(int codigo, String dpi, String nombre, String apellido, String edad){
     int filas = 0;
     Statement st = null;

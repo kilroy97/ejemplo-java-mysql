@@ -69,15 +69,7 @@ public class prueba {
                         
                         int ID = Integer.parseInt(codigo);
                        
-                            /*ResultSet datos = Conn.listado();
-                             
-                           while(datos.next()){ 
-                                //codigo = datos.getString(1);
-                                dpi = datos.getString(2);
-                                nombre = datos.getString(3);
-                                apellido = datos.getString(4);
-                                edad = datos.getString(5);
-                            }*/
+                            
                             
                         System.out.println("Ingrese nuevo dpi");
                         dpi = entrada.next();
