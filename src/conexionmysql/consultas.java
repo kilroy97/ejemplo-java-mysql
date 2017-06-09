@@ -67,7 +67,7 @@ public class consultas extends Conexionmysql {
                     "SET status = '" + status + "'" 
                     + " WHERE Codigo ='"+codigo+"';";
             filas = st.executeUpdate(consulta);
-            //UPDATE `usuario` SET `dpi` = '123456' WHERE `usuario`.`Codigo` = 2;
+            
         }
         catch(SQLException e){
             System.out.println("Error No ha introducido correctamente los datos: " + e.getMessage());
