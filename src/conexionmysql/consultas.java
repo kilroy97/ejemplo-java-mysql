@@ -62,7 +62,7 @@ public class consultas extends Conexionmysql {
             st = connection.createStatement();
             String consulta = "DELETE FROM usuario WHERE Codigo = "+codigo;
             filas = st.executeUpdate(consulta);
-            //st.execute("DELETE FORM usuario WHERE Codigo = "+codigo);
+            
         }
         catch(SQLException e){
             System.out.println("Error No ha introducido correctamente los datos: " + e.getMessage());
