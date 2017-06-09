@@ -53,11 +53,14 @@ public class prueba {
                 case 2:
                 {
                     ResultSet datos = con.listado();
+                  
+
                         System.out.println("|Nombre     |   Apellido     |   Edad ");
                     while(datos.next()){
                         System.out.println("|"+datos.getString(2)+"        | "+datos.getString(3)+"    |  "+datos.getString(4)+"| " +datos.getString(5));
                         System.out.println("-------------------------------------------");
                     }
+                    
                     break;
                 }
                 case 3:
@@ -91,11 +94,14 @@ public class prueba {
                 }
                 case 4:
                 {
+                    String status = "1";
                     System.out.println("Coloque el código del usuario que desea eliminar: ");
                     codigo = entrada.next();
+                    
                     int ID = Integer.parseInt(codigo);
                     if(!codigo.isEmpty()){
-                        con.eliminar(ID);
+                        status = "0";
+                        con.eliminar(ID, status);
                          System.out.println("usuario eliminado");
                         
                     }

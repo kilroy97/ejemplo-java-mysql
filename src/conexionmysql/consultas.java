@@ -26,9 +26,11 @@ public class consultas extends Conexionmysql {
     public ResultSet listado(){
     ResultSet filas = null;
     Statement st = null;
+    String status = "1";
     try{
         st = connection.createStatement();
-        String consulta = "SELECT * FROM usuario";
+        
+        String consulta = "SELECT * FROM usuario WHERE status = "+status ;
         filas = st.executeQuery(consulta);
     }
     catch(SQLException e){
@@ -55,14 +57,17 @@ public class consultas extends Conexionmysql {
         }
         return filas;
     }
-   public int eliminar(int codigo){
+   public int eliminar(int codigo,String status){
    int filas = 0;
+   
    Statement st = null;
         try{
             st = connection.createStatement();
-            String consulta = "DELETE FROM usuario WHERE Codigo = "+codigo;
+            String consulta = "UPDATE usuario " +
+                    "SET status = '" + status + "'" 
+                    + " WHERE Codigo ='"+codigo+"';";
             filas = st.executeUpdate(consulta);
-            
+            //UPDATE `usuario` SET `dpi` = '123456' WHERE `usuario`.`Codigo` = 2;
         }
         catch(SQLException e){
             System.out.println("Error No ha introducido correctamente los datos: " + e.getMessage());
