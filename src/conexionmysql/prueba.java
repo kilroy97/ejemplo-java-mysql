@@ -70,20 +70,24 @@
 
 
                                String cod = "";
+                               String status = "";
                                 System.out.println("Ingrese codigo a verificar: ");
                                  codigo = entrada.next();
                                  int ID = Integer.parseInt(codigo);
                                  ResultSet datos = Conn.getUno(ID);
                                  while(datos.next()){
+                                        
                                        cod = datos.getString(1);
                                        dpi= datos.getString(2);
                                        nombre = datos.getString(3);
                                        apellido = datos.getString(4);
                                        edad = datos.getString(5);
+                                       status = datos.getString(6);
                                  }
 
                            if(codigo.equals(cod))
                             {
+                                if(status.equals("1")){
                                  do{
 
 
@@ -91,7 +95,7 @@
                               System.out.println("2. Modificar Nombre de usuario");
                               System.out.println("3. Modificar Apellido de usuario");
                               System.out.println("4. Modificar Edad de usuario");
-                              System.out.println("5. salir");
+                              System.out.println("6. salir");
                               System.out.println("Que desea hacer: ");
                               opc = entrada.nextInt();
                               switch(opc){
@@ -141,11 +145,14 @@
 
                               }
 
-                          }while(opc != 5);
+                          }while(opc != 6);
 
-                }
+                                }else{
+                                    System.out.println("El usuario está inhabilitado");
+                                }
+                            }
                            else{
-                                System.out.println("No existe el codigo que ustéd ingresó. ");
+                                System.out.println("No existe el codigo que ustéd ingresó");
                             }
 
 
