@@ -65,12 +65,8 @@ public class prueba {
                       consultas Conn = new consultas();
                         
                         System.out.println("Ingrese codigo a verificar: ");
-                        codigo = entrada.next();
-                        
+                        codigo = entrada.next();                    
                         int ID = Integer.parseInt(codigo);
-                       
-                            
-                            
                         System.out.println("Ingrese nuevo dpi");
                         dpi = entrada.next();
                         System.out.println("ingrese nuevo nombre");
@@ -95,6 +91,17 @@ public class prueba {
                 }
                 case 4:
                 {
+                    System.out.println("Coloque el código del usuario que desea eliminar: ");
+                    codigo = entrada.next();
+                    int ID = Integer.parseInt(codigo);
+                    if(!codigo.isEmpty()){
+                        con.eliminar(ID);
+                         System.out.println("usuario eliminado");
+                        
+                    }
+                    else{
+                        System.out.println("el usuario no se eliminó correctamente, o introdujo un código invalido: ");
+                    }
                     break;
                 }
                 default:

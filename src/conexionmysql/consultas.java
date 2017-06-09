@@ -55,5 +55,18 @@ public class consultas extends Conexionmysql {
         }
         return filas;
     }
-   
+   public int eliminar(int codigo){
+   int filas = 0;
+   Statement st = null;
+        try{
+            st = connection.createStatement();
+            String consulta = "DELETE FROM usuario WHERE Codigo = "+codigo;
+            filas = st.executeUpdate(consulta);
+            //st.execute("DELETE FORM usuario WHERE Codigo = "+codigo);
+        }
+        catch(SQLException e){
+            System.out.println("Error No ha introducido correctamente los datos: " + e.getMessage());
+        }
+   return filas;
+   }
 }
